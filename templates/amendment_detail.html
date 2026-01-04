@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}{{ amendment.number }}th Amendment Details{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div
+        style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--saffron); padding-bottom: 15px; margin-bottom: 20px;">
+        <h1 style="margin: 0; color: var(--navy);">{{ amendment.number }}th Amendment</h1>
+        <span style="background: var(--navy); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
+            Enacted: {{ amendment.date_enacted|default:"Date not available" }}
+        </span>
+    </div>
+
+    <h3>Overview</h3>
+    <p style="font-size: 1.1rem;">{{ amendment.description }}</p>
+
+    {% if amendment.reason %}
+    <div class="info-box" style="border-left-color: var(--saffron);">
+        <h4>Why was this Amendment needed?</h4>
+        <p>{{ amendment.reason }}</p>
+    </div>
+    {% endif %}
+
+    {% if amendment.impact %}
+    <div style="margin-top: 30px;">
+        <h4>Constitutional Impact</h4>
+        <p>{{ amendment.impact }}</p>
+    </div>
+    {% endif %}
+
+    {% if amendment.long_description %}
+    <div style="margin-top: 30px; padding: 20px; background: #fff; border: 1px solid var(--border);">
+        <h4>Detailed Analysis</h4>
+        <p>{{ amendment.long_description|linebreaks }}</p>
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 30px; font-size: 0.9rem; color: var(--text-light);">
+        <strong>Relevance as of 2025:</strong> This amendment remains a key part of the constitutional framework.
+    </div>
+
+    {% if amendment.official_link %}
+    <div style="margin-top: 20px; text-align: right;">
+        <a href="{{ amendment.official_link }}" target="_blank" class="button"
+            style="background: var(--green); color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; display: inline-flex; align-items: center;">
+            View Official Source <span style="margin-left: 5px;">↗</span>
+        </a>
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
+        <a href="{% url 'amendments' %}">← Back to All Amendments</a>
+    </div>
+</div>
+{% endblock %}

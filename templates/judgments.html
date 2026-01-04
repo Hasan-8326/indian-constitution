@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Landmark Judgments{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1 class="section-title">Landmark Supreme Court Judgments</h1>
+
+    {% for case in judgments %}
+    <div class="case-card"
+        style="border: 1px solid var(--border); padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+        <h3>
+            {% if case.source_link %}
+            <a href="{{ case.source_link }}" target="_blank" title="Read contemporary coverage"
+                style="color: var(--navy); text-decoration: none; border-bottom: 1px dotted var(--navy);">
+                {{ case.title }} ({{ case.year }}) ↗
+            </a>
+            {% else %}
+            {{ case.title }} ({{ case.year }})
+            {% endif %}
+        </h3>
+        <p><strong>Outcome:</strong> {{ case.outcome }}</p>
+        <div class="info-box">
+            <strong>Significance:</strong> {{ case.significance }}
+        </div>
+        {% if case.source_name %}
+        <div style="font-size: 0.8rem; color: var(--text-light); text-align: right; margin-top: 10px;">
+            Source: {{ case.source_name }} (Contemporary Coverage)
+        </div>
+        {% endif %}
+    </div>
+    {% empty %}
+    <p>Database empty. Run seed script.</p>
+    {% endfor %}
+</div>
+{% endblock %}

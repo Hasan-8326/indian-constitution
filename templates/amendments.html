@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Amendments{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1 class="section-title">Amendments</h1>
+    <p>As of 2025, the Constitution has been amended multiple times to adapt to changing needs.</p>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="background: var(--navy); color: white;">
+                <th style="padding: 10px;">No.</th>
+                <th style="padding: 10px;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for amd in amendments %}
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 15px; font-weight: bold; text-align: center;">
+                    <a href="{% url 'amendment_detail' amd.pk %}"
+                        style="color: var(--navy); text-decoration: underline;">
+                        {{ amd.number }}
+                    </a>
+                </td>
+                <td style="padding: 15px;">
+                    <a href="{% url 'amendment_detail' amd.pk %}"
+                        style="color: var(--text-main); text-decoration: none; display: block;">
+                        {{ amd.description }}
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2" style="padding: 20px; text-align: center;">Database empty. Run seed script.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

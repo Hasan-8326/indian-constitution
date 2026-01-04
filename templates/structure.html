@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Structure{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1 class="section-title">Structure of the Constitution</h1>
+    <p>The Constitution is divided into Parts, which are further subdivided into Articles. Schedules provide additional
+        details.</p>
+
+    {% for part in parts %}
+    <div class="part-section" style="margin-top: 30px;">
+        <h3 style="background: var(--bg-light); padding: 10px; border-left: 4px solid var(--green);">{{ part }}</h3>
+        <p>{{ part.description }}</p>
+
+        <div class="articles-list" style="padding-left: 20px;">
+            {% for article in part.articles.all %}
+            <div class="article-item" style="margin-bottom: 10px;">
+                <strong>Article {{ article.number }}:</strong> {{ article.title }}
+                {% if article.is_key_article %}
+                <span style="color: grey; font-size: 0.8rem;">(Key Article)</span>
+                {% endif %}
+            </div>
+            {% empty %}
+            <p><em>No articles loaded for this part.</em></p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

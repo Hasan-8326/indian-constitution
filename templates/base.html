@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Indian Constitution{% endblock %} | Academic Explorer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="{% url 'home' %}" class="brand">Constitution of India</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'history' %}">History</a></li>
+                <li><a href="{% url 'assembly' %}">Assembly</a></li>
+                <li><a href="{% url 'preamble' %}">Preamble</a></li>
+                <li><a href="{% url 'structure' %}">Structure</a></li>
+                <li><a href="{% url 'rights' %}">Rights</a></li>
+                <li><a href="{% url 'amendments' %}">Amendments</a></li>
+                <li><a href="{% url 'judgments' %}">Judgments</a></li>
+                <li><a href="{% url 'present_day' %}">Present Day</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="ambedkar-tribute">
+                <p>Architect of the Constitution:</p>
+                <a href="https://en.wikipedia.org/wiki/B._R._Ambedkar" target="_blank" rel="noopener noreferrer"
+                    class="highlight-link">
+                    Dr. B. R. Ambedkar
+                </a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Indian Constitution Explorer. Educational Use Only.</p>
+                <p class="small-text"><a href="{% url 'references' %}">References & Sources</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

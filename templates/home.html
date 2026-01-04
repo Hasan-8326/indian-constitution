@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <h1 class="section-title">The Constitution of India</h1>
+    <p>The Constitution of India is the supreme law of India. It lays down the framework defining fundamental political
+        code, structure, procedures, powers, and duties of government institutions and sets out fundamental rights,
+        directive principles, and the duties of citizens.</p>
+
+    <div class="info-box">
+        <strong>Status as of 2025:</strong> This digital explorer provides an up-to-date reference to the Constitution,
+        including all amendments and significant judicial interpretations through 2025.
+    </div>
+
+    <h3>Significance</h3>
+    <p>Adopted by the Constituent Assembly on 26 November 1949 and effective from 26 January 1950, it replaced the
+        Government of India Act 1935 as the country's fundamental governing document, marking India's transition to a
+        sovereign republic.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li><strong>Sovereignty:</strong> India is a Sovereign Socialist Secular Democratic Republic.</li>
+        <li><strong>Parliamentary System:</strong> A federal structure with a unitary bias.</li>
+        <li><strong>Fundamental Rights:</strong> Guaranteeing civil liberties to all citizens.</li>
+        <li><strong>Independent Judiciary:</strong> Guardian of the Constitution.</li>
+    </ul>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="{% url 'history' %}" class="button"
+            style="background: var(--navy); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Begin
+            with History</a>
+    </div>
+</div>
+{% endblock %}
